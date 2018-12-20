@@ -7,6 +7,7 @@ from eth_utils.toolz import (
 )
 
 from ssz.sedes import (
+    BaseSedes,
     List,
     boolean,
     bytes_sedes,
@@ -17,10 +18,10 @@ from ssz.sedes import (
 def is_sedes(obj):
     """
     Check if `obj` is a sedes object.
-    A sedes object is characterized by having the methods
-    `serialize(obj)` and `deserialize(serial)`.
+    A sedes object must inherit the class `BaseSedes`
     """
-    return hasattr(obj, 'serialize') and hasattr(obj, 'deserialize')
+    # The issubclass check is needed for Serializable Class sedes objects
+    return isinstance(obj, BaseSedes) or issubclass(obj, BaseSedes)
 
 
 def infer_list_sedes(obj):

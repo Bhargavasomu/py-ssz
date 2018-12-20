@@ -3,8 +3,12 @@ from ssz.exceptions import (
     SerializationError,
 )
 
+from .base import (
+    BaseSedes,
+)
 
-class UnsignedInteger:
+
+class UnsignedInteger(BaseSedes):
     """
     A sedes for integers (uint<N>).
     """

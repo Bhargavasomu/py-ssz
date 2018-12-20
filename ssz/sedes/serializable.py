@@ -17,6 +17,10 @@ from ssz.exceptions import (
     SerializationError,
 )
 
+from .base import (
+    BaseSedes,
+)
+
 
 class MetaBase:
     fields = None
@@ -74,7 +78,7 @@ def merge_args_to_kwargs(args, kwargs, arg_names, allow_missing=False):
         yield name, value
 
 
-class BaseSerializable(collections.Sequence):
+class BaseSerializable(collections.Sequence, BaseSedes):
     def __init__(self, *args, **kwargs):
         if kwargs:
             field_values = merge_kwargs_to_args(args, kwargs, self._meta.field_names)

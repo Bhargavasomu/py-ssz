@@ -1,3 +1,7 @@
+from .base import (  # noqa: F401
+    BaseSedes,
+)
+
 from .boolean import (  # noqa: F401
     boolean,
     Boolean,
